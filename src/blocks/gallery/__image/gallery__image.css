@@ -1,0 +1,12 @@
+.gallery__image {
+  display: block;
+  box-sizing: border-box;
+  object-fit: cover;
+  width: 100%;
+
+  cursor: pointer;
+
+  aspect-ratio: 1/1;
+
+  border-radius: 10px 10px 0 0;
+}

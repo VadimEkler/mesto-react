@@ -1,0 +1,18 @@
+.gallery {
+  margin: 36px auto 0 auto;
+  width: 282px;
+}
+
+@media screen and (min-width: 680px) {
+  .gallery {
+    margin: 45px auto 0 auto;
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1082px) {
+  .gallery {
+    margin: 51px auto 0 auto;
+    width: 880px;
+  }
+}
