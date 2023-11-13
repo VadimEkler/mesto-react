@@ -10,7 +10,7 @@
 }
 
 .profile__portrait-edit-btn::before {
-  content:'';
+  content: "";
   background-image: url(../../../Images/icons/profile__edit-button-2.svg);
   background-size: 26px 26px;
   background-repeat: no-repeat;
@@ -30,6 +30,5 @@
 .profile__portrait-edit-btn:hover::before {
   background-color: rgb(0, 0, 0);
   opacity: 0.8;
-  transition: opacity .3s ease-in;
+  transition: opacity 0.3s ease-in;
 }
-

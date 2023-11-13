@@ -1,20 +1,16 @@
-import Header from "./header/Header.jsx";
-import Main from "./main/Main.jsx";
-import Footer from "./footer/Footer.jsx";
-import PopupWithForm from "./popupWithForm/popupWithForm.jsx";
-import ImagePopup from "./imagePopup/imagePopup.jsx";
+import Header from "./Header.jsx";
+import Main from "./Main.jsx";
+import Footer from "./Footer.jsx";
+import PopupWithForm from "./popupWithForm.jsx";
+import ImagePopup from "./ImagePopup.jsx";
 import { useState } from "react";
 
-
 function App() {
-
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [isImagePopup, setIsImagePopup] = useState(false);
-  
-
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -42,23 +38,23 @@ function App() {
 
   return (
     <>
-      <Header/>
+      <Header />
 
       <Main
-        onEditProfile = {handleEditProfileClick}
-        onEditAvatar = {handleEditAvatarClick}
-        onAddPlace = {handleAddPlaceClick}
-        onCardImageClick = {handleCardClick}
+        onEditProfile={handleEditProfileClick}
+        onEditAvatar={handleEditAvatarClick}
+        onAddPlace={handleAddPlaceClick}
+        onCardImageClick={handleCardClick}
       />
 
-      <Footer/>
+      <Footer />
 
-      <PopupWithForm 
-      name="user-info"
-      title="Редактировать профиль"
-      buttonDefaultValue="Сохранить"
-      isOpen = {isEditProfilePopupOpen}
-      onClose = {closeAllPopups}
+      <PopupWithForm
+        name="user-info"
+        title="Редактировать профиль"
+        buttonDefaultValue="Сохранить"
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
       >
         <div className="popup__input-container">
           <input
@@ -68,7 +64,7 @@ function App() {
             placeholder="Ваше имя"
             minLength={2}
             maxLength={40}
-            required=""
+            required
           />
           <span id="nickname-error" className="error" />
         </div>
@@ -80,19 +76,18 @@ function App() {
             placeholder="Расскажите о себе"
             minLength={2}
             maxLength={200}
-            required=""
+            required
           />
           <span id="description-error" className="error" />
         </div>
-
       </PopupWithForm>
 
-      <PopupWithForm 
-      name="add-image"
-      title="Новое место"
-      buttonDefaultValue="Создать"
-      isOpen = {isAddPlacePopupOpen}
-      onClose = {closeAllPopups}
+      <PopupWithForm
+        name="add-image"
+        title="Новое место"
+        buttonDefaultValue="Создать"
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
       >
         <div className="popup__input-container">
           <input
@@ -102,7 +97,7 @@ function App() {
             placeholder="Новое место"
             minLength={2}
             maxLength={30}
-            required=""
+            required
           />
           <span id="name-error" className="error" />
         </div>
@@ -112,18 +107,18 @@ function App() {
             name="link"
             type="url"
             placeholder="Ссылка на картинку"
-            required=""
+            required
           />
           <span id="link-error" className="error" />
         </div>
-      </PopupWithForm>  
+      </PopupWithForm>
 
-      <PopupWithForm 
-      name="edit-avatar"
-      title="Обновить аватар"
-      buttonDefaultValue="Сохранить"
-      isOpen = {isEditAvatarPopupOpen}
-      onClose = {closeAllPopups}
+      <PopupWithForm
+        name="edit-avatar"
+        title="Обновить аватар"
+        buttonDefaultValue="Сохранить"
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
       >
         <div className="popup__input-container">
           <input
@@ -131,20 +126,24 @@ function App() {
             name="avatar"
             type="url"
             placeholder="Ссылка на картинку"
-            required=""
+            required
           />
           <span id="avatar-error" className="error" />
         </div>
       </PopupWithForm>
 
-      <PopupWithForm 
-      name="delete"
-      title="Вы уверены?"
-      buttonDefaultValue="Да"
+      <PopupWithForm
+        name="delete"
+        title="Вы уверены?"
+        buttonDefaultValue="Да"
       />
 
-     <ImagePopup card={selectedCard} isOpen={isImagePopup} onClose={closeAllPopups}/>
-  </>
+      <ImagePopup
+        card={selectedCard}
+        isOpen={isImagePopup}
+        onClose={closeAllPopups}
+      />
+    </>
   );
 }
 
