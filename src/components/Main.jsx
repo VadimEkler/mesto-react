@@ -2,7 +2,6 @@ import Card from "./Card.jsx";
 import { useContext } from "react";
 import CurrentUserContext from "../contexts/CurrentUserContext.js";
 
-
 export default function Main({
   onEditProfile,
   onAddCard,
@@ -11,7 +10,6 @@ export default function Main({
   onCardImageClick,
   cards,
 }) {
-
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -25,18 +23,20 @@ export default function Main({
           >
             <img
               className="profile__portrait"
-              src={currentUser.avatar || '#'}
+              src={currentUser.avatar || "#"}
               alt="Аватар профиля"
             />
           </button>
           <div className="profile__info">
-            <h1 className="profile__user-nickname">{currentUser.name || ''}</h1>
+            <h1 className="profile__user-nickname">{currentUser.name || ""}</h1>
             <button
               className="profile__edit-btn"
               type="button"
               onClick={onEditProfile}
             />
-            <p className="profile__user-description">{currentUser.about || ''}</p>
+            <p className="profile__user-description">
+              {currentUser.about || ""}
+            </p>
           </div>
           <button
             className="profile__add-btn"
@@ -51,7 +51,11 @@ export default function Main({
           {cards.map((data) => {
             return (
               <li className="gallery__list-item" key={data._id}>
-                <Card card={data} onCardImageClick={onCardImageClick} onDelete={onDelete}/>
+                <Card
+                  card={data}
+                  onCardImageClick={onCardImageClick}
+                  onDelete={onDelete}
+                />
               </li>
             );
           })}
