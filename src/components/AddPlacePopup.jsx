@@ -1,5 +1,5 @@
 import PopupWithForm from "./PopupWithForm.jsx";
-import useFormValidator from "../utils/useFormValidator.js";
+import useFormValidator from "../hooks/useFormValidator.js";
 
 export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   const { values, errors, isInputValid, isValid, handleChange, reset } =
