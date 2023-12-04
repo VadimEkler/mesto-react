@@ -1,5 +1,6 @@
 import PopupWithForm from "./PopupWithForm.jsx";
 import useFormValidator from "../hooks/useFormValidator.js";
+import Input from "./Input.jsx";
 
 export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   const { values, errors, isInputValid, isValid, handleChange, reset } =
@@ -25,44 +26,26 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       isValid={isValid}
       onSubmit={handleSubmit}
     >
-      <div className="popup__input-container">
-        <input
-          className={`popup__form-field popup__form-field_input_title ${
-            isInputValid.name === undefined || isInputValid.name
-              ? ""
-              : "popup__form-field_invalid"
-          }`}
-          name="name"
-          type="text"
-          placeholder="Новое место"
-          minLength={2}
-          maxLength={30}
-          required
-          value={values.name || ""}
-          onChange={handleChange}
-        />
-        <span id="name-error" className="error">
-          {errors.name}
-        </span>
-      </div>
-      <div className="popup__input-container">
-        <input
-          className={`popup__form-field popup__form-field_input_link ${
-            isInputValid.link === undefined || isInputValid.link
-              ? ""
-              : "popup__form-field_invalid"
-          }`}
-          name="link"
-          type="url"
-          placeholder="Ссылка на картинку"
-          required
-          value={values.link || ""}
-          onChange={handleChange}
-        />
-        <span id="link-error" className="error">
-          {errors.link}
-        </span>
-      </div>
+      <Input
+      name="name"
+      type="text"
+      placeholder="Новое место"
+      minLength={2}
+      maxLength={30}
+      isInputValid={isInputValid.name}
+      value={values.name}
+      onChange={handleChange}
+      error={errors.name}
+      />
+      <Input
+      name="link"
+      type="url"
+      placeholder="Ссылка на картинку"
+      isInputValid={isInputValid.link}
+      value={values.link}
+      onChange={handleChange}
+      error={errors.link}
+      />
     </PopupWithForm>
   );
 }

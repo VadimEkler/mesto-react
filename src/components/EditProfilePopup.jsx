@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm.jsx";
 import CurrentUserContext from "../contexts/CurrentUserContext.js";
 import useFormValidator from "../hooks/useFormValidator.js";
+import Input from "./Input.jsx";
 
 export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
@@ -43,46 +44,28 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       isValid={isValid}
       onSubmit={handleSubmit}
     >
-      <div className="popup__input-container">
-        <input
-          className={`popup__form-field popup__form-field_input_nickname ${
-            isInputValid.nickname === undefined || isInputValid.nickname
-              ? ""
-              : "popup__form-field_invalid"
-          }`}
-          name="nickname"
-          type="text"
-          placeholder="Ваше имя"
-          minLength={2}
-          maxLength={40}
-          required
-          value={values.nickname || ""}
-          onChange={handleChange}
-        />
-        <span id="nickname-error" className="error">
-          {errors.nickname}
-        </span>
-      </div>
-      <div className="popup__input-container">
-        <input
-          className={`popup__form-field popup__form-field_input_description ${
-            isInputValid.description === undefined || isInputValid.description
-              ? ""
-              : "popup__form-field_invalid"
-          }`}
-          name="description"
-          type="text"
-          placeholder="Расскажите о себе"
-          minLength={2}
-          maxLength={200}
-          required
-          value={values.description || ""}
-          onChange={handleChange}
-        />
-        <span id="description-error" className="error">
-          {errors.description}
-        </span>
-      </div>
+      <Input 
+        name="nickname" 
+        type="text" 
+        placeholder="Ваше имя" 
+        minLength={2}
+        maxLength={40}
+        isInputValid={isInputValid.nickname}
+        value={values.nickname}
+        onChange={handleChange}
+        error={errors.nickname}
+      />
+      <Input 
+        name="description"
+        type="text"
+        placeholder="Расскажите о себе"
+        minLength={2}
+        maxLength={200}
+        isInputValid={isInputValid.description}
+        value={values.description}
+        onChange={handleChange}
+        error={errors.description}
+      />
     </PopupWithForm>
   );
 }

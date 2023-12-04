@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import useFormValidator from "../hooks/useFormValidator.js";
 import PopupWithForm from "./PopupWithForm.jsx";
+import Input from "./Input.jsx";
 
 export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   const inputElement = useRef();
@@ -27,25 +28,15 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
       onSubmit={handleSubmit}
       isValid={isValid}
     >
-      <div className="popup__input-container">
-        <input
-          ref={inputElement}
-          className={`popup__form-field popup__form-field_input_link ${
-            isInputValid.avatar === undefined || isInputValid.avatar
-              ? ""
-              : "popup__form-field_invalid"
-          }`}
-          name="avatar"
-          type="url"
-          placeholder="Ссылка на картинку"
-          required
-          value={values.avatar || ""}
-          onChange={handleChange}
-        />
-        <span id="nickname-error" className="error">
-          {errors.avatar}
-        </span>
-      </div>
-    </PopupWithForm>
+      <Input 
+        name="avatar" 
+        type="url" 
+        placeholder="Ссылка на картинку" 
+        isInputValid={isInputValid.avatar}
+        value={values.avatar}
+        onChange={handleChange}
+        error={errors.avatar}
+      />    
+      </PopupWithForm>
   );
 }
