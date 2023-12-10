@@ -1,9 +1,0 @@
-import header__logo from "../Images/icons/header__logo.svg";
-
-export default function Header() {
-  return (
-    <header className="header">
-      <img className="header__logo" src={header__logo} alt="Место. Логотип" />
-    </header>
-  );
-}

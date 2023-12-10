@@ -1,16 +1,14 @@
-import { useRef } from "react";
 import useFormValidator from "../hooks/useFormValidator.js";
-import PopupWithForm from "./PopupWithForm.jsx";
-import Input from "./Input.jsx";
+import PopupWithForm from "./PopupWithForm/PopupWithForm.jsx";
+import Input from "./Input/Input.jsx";
 
 export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
-  const inputElement = useRef();
   const { values, errors, isInputValid, isValid, handleChange, reset } =
     useFormValidator();
 
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateAvatar({ avatar: inputElement.current.value }, reset);
+    onUpdateAvatar({ avatar: values.avatar }, reset);
   }
 
   function closeWithReset() {
